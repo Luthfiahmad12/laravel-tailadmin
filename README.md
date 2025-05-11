@@ -20,7 +20,7 @@ A simple dashboard tailwind admin template, integrated with [**TailAdmin**](http
 -   Clone repository
 
     ```
-    git clone https://github.com/Luthfiahmad12/laravel-tailadmin
+    git clone https://github.com/Luthfiahmad12/laravel-tailadmin.git
     ```
 
 -   Install dependencies
