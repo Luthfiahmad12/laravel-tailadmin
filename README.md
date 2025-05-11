@@ -1,16 +1,21 @@
-## ✨ Laravel Tailadmin
+# ✨ Laravel Tailadmin
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 [![Laravel Version](https://img.shields.io/badge/Laravel-^12.0-red.svg)](https://laravel.com/) [![PHP Version](https://img.shields.io/badge/PHP-^8.2-blue.svg)](https://www.php.net/)
 
 A simple dashboard tailwind admin template, integrated with [**TailAdmin**](https://tailadmin.com/) and [**Breeze Staterkit**](https://laravel.com/docs/11.x/starter-kits#laravel-breeze).
 
-### Requirement
+## Features
+
+-   Authentication and user management using Breeze Staterkit
+-   Show activity log by User with [**Spatie laravel-activitylog**](https://spatie.be/docs/laravel-activitylog/v4/introduction)
+
+## Requirement
 
 -   PHP > 8.2
--   Laravel 12
+-   Laravel 12 pppp
 
-### Installation
+## Installation
 
 -   Clone repository
 
@@ -43,12 +48,14 @@ A simple dashboard tailwind admin template, integrated with [**TailAdmin**](http
     php artisan serve
     ```
 
-### Contributing
+## Contributing
 
 Have suggestions or want to contribute? Here’s how:
 
 -   Submit a **Pull Request (PR)**
 -   Report issues or request features by creating an **Issue**
+
+---
 
 ---
 
