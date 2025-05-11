@@ -117,34 +117,41 @@
                         </div>
 
                         <ul class="custom-scrollbar flex h-auto flex-col overflow-y-auto">
-                            <li>
-                                <a class="flex gap-3 rounded-lg border-b border-gray-100 p-3 px-4.5 py-3 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-white/5"
-                                    href="#">
+                            @forelse ($activities as $activity)
+                                <li
+                                    class="flex gap-3 rounded-lg border-b border-gray-100 p-3 px-4.5 py-3 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-white/5">
                                     <span class="relative z-1 block h-10 w-full max-w-10 rounded-full">
-                                        <img src="./images/user/user-05.jpg" alt="User"
-                                            class="overflow-hidden rounded-full" />
-                                        <span
-                                            class="bg-error-500 absolute right-0 bottom-0 z-10 h-2.5 w-full max-w-2.5 rounded-full border-[1.5px] border-white dark:border-gray-900"></span>
+                                        <div class="overflow-hidden rounded-full">
+                                            <x-heroicon-s-exclamation-circle class="fill-current text-amber-400" />
+                                        </div>
                                     </span>
 
                                     <span class="block">
                                         <span class="text-theme-sm mb-1.5 block text-gray-500 dark:text-gray-400">
-                                            <span class="font-medium text-gray-800 dark:text-white/90">Brandon
-                                                Philips</span>
-                                            requests permission to change
-                                            <span class="font-medium text-gray-800 dark:text-white/90">Project -
-                                                Nganter App</span>
+                                            Log activity
+                                            <q class="font-semi text-amber-500">
+                                                {{ ' ' . $activity->log_name . ' ' }}
+                                            </q>
+                                            detected!
                                         </span>
 
                                         <span
                                             class="text-theme-xs flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                                            <span>Project</span>
+                                            <span>
+                                                ip : {{ $activity->properties->get('ip') }}
+                                            </span>
                                             <span class="h-1 w-1 rounded-full bg-gray-400"></span>
-                                            <span>1 hr ago</span>
+                                            <span>
+                                                {{ $activity->created_at->diffForHumans() }}
+                                            </span>
                                         </span>
                                     </span>
-                                </a>
-                            </li>
+                                </li>
+                            @empty
+                                <li class="p-3 text-center text-gray-500 dark:text-gray-400">
+                                    nothing activities.
+                                </li>
+                            @endforelse
                         </ul>
 
                         <a href="#"
