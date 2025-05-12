@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -49,9 +50,15 @@ class User extends Authenticatable
 
     public function initials(): string
     {
-        return Str::of($this->name)
+        $initial =  Str::of($this->name)
             ->explode(' ')
             ->map(fn(string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
+        return 'https://ui-avatars.com/api/?name=' . $initial . '';
+    }
+
+    public function avatar(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

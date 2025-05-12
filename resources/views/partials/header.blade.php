@@ -169,7 +169,12 @@
                 <a class="flex items-center text-gray-700 dark:text-gray-400" href="#"
                     @click.prevent="dropdownOpen = ! dropdownOpen">
                     <span class="mr-3 h-11 w-11 overflow-hidden rounded-full">
-                        <img src="https://ui-avatars.com/api/?name={{ auth()->user()->initials() }}" alt="User" />
+                        @if (auth()->user()->avatar)
+                            <img src="{{ asset('storage/' . auth()->user()->avatar->path) }}" alt="User"
+                                class="border border-gray-200" />
+                        @else
+                            <img src="{{ auth()->user()->initials() }}" alt="User" />
+                        @endif
                     </span>
 
                     <span class="text-theme-sm mr-1 block font-medium"> {{ auth()->user()->name }} </span>
