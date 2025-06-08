@@ -46,10 +46,19 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                         <a href="index.html" class="block mb-2">
                             <x-application-logo class="fill-current text-gray-400 dark:text-gray-200 size-16" />
                         </a>
-                        <p class="text-lg font-bold text-center text-gray-400 dark:text-white/60">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere assumenda quis perspiciatis
-                            impedit deserunt vel necessitatibus.
-                        </p>
+                        @php
+                            [$message, $author] = str(Illuminate\Foundation\Inspiring::quotes()->random())->explode(
+                                '-',
+                            );
+                        @endphp
+                        <blockquote class="space-y-2 text-center">
+                            <p class="text-lg font-semibold text-gray-400 dark:text-white/60">
+                                &ldquo;{{ trim($message) }}&rdquo;
+                            </p>
+                            <p class="text-md font-base text-gray-300 dark:text-white/50">
+                                - {{ trim($author) }}
+                            </p>
+                        </blockquote>
                     </div>
                 </div>
             </div>
@@ -59,8 +68,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                 <button
                     class="inline-flex items-center justify-center text-gray-200 transition-colors rounded-full size-12 bg-brand-500 hover:bg-brand-600"
                     @click.prevent="darkMode = !darkMode">
-                    <x-heroicon-o-sun class="hidden dark:block size-6 text-gray-700" />
-                    <x-heroicon-o-moon class="dark:hidden size-6 text-gray-700" />
+                    <x-heroicon-o-sun class="hidden dark:block size-6" />
+                    <x-heroicon-o-moon class="dark:hidden size-6" />
                 </button>
             </div </div>
         </div>

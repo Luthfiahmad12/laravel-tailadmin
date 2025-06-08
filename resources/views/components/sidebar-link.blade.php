@@ -2,7 +2,7 @@
 
 @php
     $classes = 'menu-item group ' . ($active ?? false ? 'menu-item-active' : 'menu-item-inactive');
-    $iconClasses = ($active ?? false ? 'menu-item-icon-active' : 'menu-item-icon-inactive') . ' size-7';
+    $iconClasses = $active ?? false ? 'menu-item-icon-active' : 'menu-item-icon-inactive';
 @endphp
 
 <a href="{{ $href }}" {{ $attributes->merge(['class' => $classes]) }}>

@@ -6,18 +6,18 @@
             <!-- Hamburger Toggle BTN -->
             <button
                 :class="sidebarToggle ? 'lg:bg-transparent dark:lg:bg-transparent bg-gray-100 dark:bg-gray-800' : ''"
-                class="z-99999 flex h-10 w-10 items-center justify-center rounded-lg border-gray-200 text-gray-500 lg:h-11 lg:w-11 lg:border dark:border-gray-800 dark:text-gray-400"
+                class="z-99999 flex size-8 lg:size-10 items-center justify-center rounded-lg border-gray-200 text-gray-500 lg:border dark:border-gray-800 dark:text-gray-400"
                 @click.stop="sidebarToggle = !sidebarToggle">
 
                 {{-- desktop --}}
-                <x-heroicon-o-bars-3-center-left class="hidden fill-current lg:block size-6" />
+                <x-heroicon-o-bars-3-bottom-left class="hidden fill-current lg:block size-5" />
 
                 {{-- mobile --}}
                 <div :class="sidebarToggle ? 'hidden' : 'block lg:hidden'" class="fill-current lg:hidden">
-                    <x-heroicon-o-bars-3-bottom-right class="size-6" />
+                    <x-heroicon-o-bars-3-bottom-left class="size-5" />
                 </div>
                 <div :class="sidebarToggle ? 'block lg:hidden' : 'hidden'" class="fill-current">
-                    <x-heroicon-o-x-mark class="size-6" />
+                    <x-heroicon-o-x-mark class="size-5" />
                 </div>
 
             </button>
@@ -53,13 +53,13 @@
                             <x-heroicon-c-magnifying-glass class="fill-gray-500 dark:fill-gray-400 size-6" />
                         </span>
                         <input type="text" placeholder="Search or type command..." id="search-input"
-                            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-200 bg-transparent py-2.5 pr-14 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[430px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30" />
+                            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-10 w-full rounded-lg border border-gray-200 bg-transparent py-2.5 pr-14 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[430px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30" />
 
                         <button id="search-button"
                             class="absolute top-1/2 right-2.5 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400">
-                            <span class="text-blue-600 dark:text-blue-400">ctrl +</span>
+                            <span class="text-brand-600">ctrl +</span>
                             <span> / </span>
-                            <span class="text-blue-600 dark:text-blue-400">or</span>
+                            <span class="text-brand-600">or</span>
                             <span> K</span>
                         </button>
                     </div>
@@ -72,7 +72,7 @@
             <div class="2xsm:gap-3 flex items-center gap-2">
                 <!-- Dark Mode Toggler -->
                 <button
-                    class="hover:text-dark-900 relative flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                    class="hover:text-dark-900 relative flex size-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
                     @click.prevent="darkMode = !darkMode">
                     <x-heroicon-o-sun class="hidden dark:block size-6" />
                     <x-heroicon-o-moon class="dark:hidden size-6" />
@@ -82,7 +82,7 @@
                 <!-- Notification Menu Area -->
                 <div class="relative" x-data="{ dropdownOpen: false, notifying: true }" @click.outside="dropdownOpen = false">
                     <button
-                        class="hover:text-dark-900 relative flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                        class="hover:text-dark-900 relative flex size-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
                         @click.prevent="dropdownOpen = ! dropdownOpen; notifying = false">
                         <span :class="!notifying ? 'hidden' : 'flex'"
                             class="absolute top-0.5 right-0 z-1 h-2 w-2 rounded-full bg-orange-400">
@@ -99,7 +99,8 @@
 
                     <!-- Dropdown Start -->
                     <div x-show="dropdownOpen"
-                        class="shadow-theme-lg dark:bg-gray-dark absolute -right-[240px] mt-[17px] flex h-[480px] w-[350px] flex-col rounded-2xl border border-gray-200 bg-white p-3 sm:w-[361px] lg:right-0 dark:border-gray-800">
+                        class="shadow-theme-lg dark:bg-gray-dark absolute -right-[240px] mt-[17px] flex h-[480px] w-[350px] flex-col rounded-2xl border border-gray-200 bg-white p-3 sm:w-[361px] lg:right-0 dark:border-gray-800"
+                        x-collapse>
                         <div
                             class="mb-3 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800">
                             <h5 class="text-lg font-semibold text-gray-800 dark:text-white/90">
@@ -121,9 +122,7 @@
                                 <li
                                     class="flex gap-3 rounded-lg border-b border-gray-100 p-3 px-4.5 py-3 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-white/5">
                                     <span class="relative z-1 block h-10 w-full max-w-10 rounded-full">
-                                        <div class="overflow-hidden rounded-full">
-                                            <x-heroicon-s-exclamation-circle class="fill-current text-amber-400" />
-                                        </div>
+                                        <x-hugeicons-alert-circle class="text-amber-400" />
                                     </span>
 
                                     <span class="block">
@@ -154,10 +153,12 @@
                             @endforelse
                         </ul>
 
-                        <a href="#"
-                            class="text-theme-sm shadow-theme-xs mt-3 flex justify-center rounded-lg border border-gray-300 bg-white p-3 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-                            View All Notification
-                        </a>
+                        @if (!$activities->isEmpty())
+                            <a href="#"
+                                class="text-theme-sm shadow-theme-xs mt-3 flex justify-center rounded-lg border border-gray-300 bg-white p-2 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+                                View All Notification
+                            </a>
+                        @endif
                     </div>
                     <!-- Dropdown End -->
                 </div>
@@ -168,16 +169,18 @@
             <div class="relative" x-data="{ dropdownOpen: false }" @click.outside="dropdownOpen = false">
                 <a class="flex items-center text-gray-700 dark:text-gray-400" href="#"
                     @click.prevent="dropdownOpen = ! dropdownOpen">
-                    <span class="mr-3 h-11 w-11 overflow-hidden rounded-full">
+                    <div class="mr-3 overflow-hidden rounded-full">
                         @if (auth()->user()->avatar)
                             <img src="{{ asset('storage/' . auth()->user()->avatar->path) }}" alt="User"
-                                class="border border-gray-200" />
+                                class="border border-gray-200 size-10" />
                         @else
-                            <img src="{{ auth()->user()->initials() }}" alt="User" />
+                            <img src="{{ auth()->user()->initials() }}" alt="User" class="size-10" />
                         @endif
-                    </span>
+                    </div>
 
-                    <span class="text-theme-sm mr-1 block font-medium"> {{ auth()->user()->name }} </span>
+                    <span class="text-theme-sm mr-1 block font-medium">
+                        {{ auth()->user()->name }}
+                    </span>
 
                     <svg :class="dropdownOpen && 'rotate-180'" class="stroke-gray-500 dark:stroke-gray-400"
                         width="18" height="20" viewBox="0 0 18 20" fill="none"
@@ -189,21 +192,22 @@
 
                 <!-- Dropdown profile -->
                 <div x-show="dropdownOpen"
-                    class="shadow-theme-lg dark:bg-gray-dark absolute right-0 mt-[17px] flex w-[260px] flex-col rounded-2xl border border-gray-200 bg-white p-3 dark:border-gray-800">
+                    class="shadow-theme-lg dark:bg-gray-dark absolute right-0 mt-[17px] flex w-[260px] flex-col rounded-xl border border-gray-200 bg-white p-3 dark:border-gray-800"
+                    x-collapse>
                     <div>
-                        <span class="text-theme-sm block font-medium text-gray-700 dark:text-gray-400">
+                        <span class="text-theme-md block font-medium text-gray-700 dark:text-gray-400">
                             {{ auth()->user()->name }}
                         </span>
-                        <span class="text-theme-xs mt-0.5 block text-gray-500 dark:text-gray-400">
+                        <span class="text-theme-sm mt-0.5 block text-gray-500 dark:text-gray-400">
                             {{ auth()->user()->email }}
                         </span>
                     </div>
 
-                    <ul class="flex flex-col gap-1 border-t border-gray-200 pt-4 pb-3 dark:border-gray-800">
+                    <ul class="flex flex-col gap-1 border-t border-gray-200 pt-4 pb-3 dark:border-gray-700">
                         <li>
                             <a href="{{ route('profile.edit') }}"
                                 class="group text-theme-sm flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300">
-                                <x-heroicon-o-user-circle class="text-gray-500 dark:text-gray-200 size-6" />
+                                <x-hugeicons-user-edit-01 class="text-gray-500 dark:text-gray-200 size-5" />
                                 Edit profile
                             </a>
                         </li>
@@ -212,9 +216,8 @@
                                 @csrf
                                 <button type="submit"
                                     class="group text-theme-sm flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300 block w-full">
-                                    <x-heroicon-o-arrow-left-start-on-rectangle
-                                        class="text-gray-500 dark:text-gray-200 size-6" />
-                                    Log out
+                                    <x-hugeicons-logout-03 class="text-gray-500 dark:text-gray-200 size-5" />
+                                    Log Out
                                 </button>
                             </form>
                         </li>

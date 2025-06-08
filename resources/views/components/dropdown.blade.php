@@ -1,35 +1,55 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-700'])
+@props(['label'])
 
 @php
-$alignmentClasses = match ($align) {
-    'left' => 'ltr:origin-top-left rtl:origin-top-right start-0',
-    'top' => 'origin-top',
-    default => 'ltr:origin-top-right rtl:origin-top-left end-0',
-};
-
-$width = match ($width) {
-    '48' => 'w-48',
-    default => $width,
-};
+    $iconClasses = $active ?? false ? 'menu-item-icon-active' : 'menu-item-icon-inactive';
 @endphp
 
-<div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
-    <div @click="open = ! open">
-        {{ $trigger }}
-    </div>
+<li x-data="{
+    open: false,
+    hasActiveSubLink: false,
+    init() {
+        // Cek jika ada sub-link yang aktif saat inisialisasi Alpine.js
+        // Ini akan bergantung pada data yang dilewatkan dari sub-link melalui slot
+        this.hasActiveSubLink = this.$el.querySelector('.menu-dropdown-item-active') !== null;
+        if (this.hasActiveSubLink) {
+            this.open = true; // Buka dropdown jika ada sub-link yang aktif
+            this.$dispatch('set-selected', '{{ $label }}'); // Beri tahu parent bahwa menu ini harus dipilih
+        }
+        // Atur status 'selected' awal jika perlu, atau ini akan dihandle oleh click event
+        if ('{{ $selected ?? '' }}' === '{{ $label }}') {
+            this.open = true;
+        }
+    }
+}">
+    <a href="#" @click.prevent="open = !open; selected = (open ? '{{ $label }}' : '');"
+        class="menu-item group"
+        :class="{
+            ' menu-item-active': (open || hasActiveSubLink),
+            ' menu-item-inactive': !(open || hasActiveSubLink)
+        }">
 
-    <div x-show="open"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 scale-95"
-            x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-75"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-95"
-            class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}"
-            style="display: none;"
-            @click="open = false">
-        <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
-            {{ $content }}
+        {{-- Slot for icon --}}
+        <div class="{{ $iconClasses }}">
+            {{ $slot }}
         </div>
+
+        <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+            {{ $label }}
+        </span>
+
+        {{-- Icon panah --}}
+        <div class="menu-item-arrow ml-auto" :class="[open ? 'rotate-180' : '', sidebarToggle ? 'lg:hidden' : '']">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </a>
+
+    <div class="overflow-hidden transform transition-all duration-300 ease-in-out" x-ref="dropdownPanel" x-show="open"
+        x-collapse.duration.300ms>
+        <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'" class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
+            {{ $dropdownItems }}
+        </ul>
     </div>
-</div>
+</li>

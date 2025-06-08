@@ -1,19 +1,19 @@
 <aside :class="sidebarToggle ? 'translate-x-0 lg:w-[90px]' : '-translate-x-full'"
-    class="sidebar fixed left-0 top-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-r border-gray-200 bg-white px-5 dark:border-gray-800 dark:bg-black lg:static lg:translate-x-0">
-    <!-- SIDEBAR HEADER -->
+    class="sidebar fixed left-0 top-0 z-9999 flex h-screen w-[275px] flex-col overflow-y-hidden border-r border-gray-200 bg-white px-5 dark:border-gray-800 dark:bg-black lg:static lg:translate-x-0 transition-all duration-300 ease-in-out">
 
+    <!-- SIDEBAR HEADER -->
     <div :class="sidebarToggle ? 'justify-center' : 'justify-between'"
         class="flex items-center gap-2 pt-4 pb-6 sidebar-header">
         <a href="{{ route('dashboard') }}">
             <div class="logo flex items-center gap-2" :class="sidebarToggle ? 'hidden' : ''">
-                <x-application-logo class=" h-10 w-auto fill-current text-gray-500 dark:text-gray-200" />
+                <x-application-logo class="h-10 w-auto fill-current text-gray-500 dark:text-gray-200" />
                 <span class="text-gray-500 dark:text-gray-200 font-bold uppercase">
                     {{ config('app.name') }}
                 </span>
             </div>
 
             <div class="logo-icon" :class="sidebarToggle ? 'lg:block' : 'hidden'">
-                <x-application-logo class="h-12 w-auto fill-current text-gray-500 dark:text-gray-200" />
+                <x-application-logo class="h-10 w-auto fill-current text-gray-500 dark:text-gray-200" />
             </div>
         </a>
     </div>
@@ -21,7 +21,7 @@
 
     <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
         <!-- Sidebar Menu -->
-        <nav x-data="{ selected: $persist('Profile') }">
+        <nav>
             <!-- Menu Group -->
             <div>
                 <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
@@ -38,14 +38,21 @@
                     </svg>
                 </h3>
 
-                <ul class="flex flex-col gap-4 mb-6">
-                    <!-- Menu Item dashboard -->
+                <ul class="flex flex-col gap-2 mb-6">
                     <li>
                         <x-sidebar-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" :label="__('Dashboard')">
-                            <x-heroicon-m-rectangle-group />
+                            <x-hugeicons-dashboard-square-01 class="size-5" />
                         </x-sidebar-link>
                     </li>
-                    <!-- Menu Item dashboard -->
+                    <li>
+                        <x-dropdown label="Collapse">
+                            <x-hugeicons-right-to-left-list-number class="size-5" />
+                            <x-slot:dropdownItems>
+                                <x-dropdown-link href="#" label="Sub collapse 1" />
+                                <x-dropdown-link href="#" label="Sub collapse 2" />
+                            </x-slot:dropdownItems>
+                        </x-dropdown>
+                    </li>
                 </ul>
             </div>
         </nav>

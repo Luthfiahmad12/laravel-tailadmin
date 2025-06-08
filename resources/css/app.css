@@ -298,7 +298,7 @@
 }
 
 .sidebar:hover {
-    width: 290px;
+    width: 275px;
 }
 .sidebar:hover .logo {
     display: flex;

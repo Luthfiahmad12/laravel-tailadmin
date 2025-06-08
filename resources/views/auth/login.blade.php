@@ -17,8 +17,8 @@
                 <!-- Email -->
                 <div>
                     <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input type="email" id="email" name="email" :value="old('email')" required autofocus
-                        autocomplete="email" />
+                    <x-text-input type="email" id="email" name="email" :value="old('email')" class="block w-full"
+                        required autofocus autocomplete="email" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <!-- Password -->
