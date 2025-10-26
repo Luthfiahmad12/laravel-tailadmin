@@ -21,41 +21,9 @@ A simple dashboard tailwind admin template, integrated with [**TailAdmin**](http
 
     ```
     git clone https://github.com/Luthfiahmad12/laravel-tailadmin.git
-    ```
-
--   Install dependencies
-
-    ```
-    composer install
-    npm install
-    ```
-
--   Setup environtment
-
-    ```
-    cp .env.example .env
-    php artisan key:generate
-    ```
-
--   Run migration _( before running, make sure database configuration is correct)_
-
-    ```
-    php artisan migrate
-    ```
-
--   Start the development server
-    ```
+    composer setup
     php artisan serve
     ```
-
-## Contributing
-
-Have suggestions or want to contribute? Here’s how:
-
--   Submit a **Pull Request (PR)**
--   Report issues or request features by creating an **Issue**
-
----
 
 ---
 
